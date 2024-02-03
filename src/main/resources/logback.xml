@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+    <property name="LOG_FILE_LOCATION" value="./log-file" />
+    <property name="CONSOLE_LOG_PATTERN" value="%red(%date{yyyy-MM-dd HH:mm:ss}) %highlight(%-5level) %red([%thread]) %boldMagenta(%logger{50}) %cyan(%msg%n)"/>
+
+    <turboFilter class="com.comeup.slflog.NoDebugLogFilter" />
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="SIFT" class="ch.qos.logback.classic.sift.SiftingAppender">
+        <discriminator>
+            <key>discriminator</key>
+            <defaultValue>STDOUT</defaultValue>
+        </discriminator>
+        <sift>
+            <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+                <encoder>
+                    <pattern>%red(%d{HH:mm:ss.SSS}) %green([%thread] %-5level) %logger{36} - %yellow([%marker]) [${discriminator} %X{discriminator}] %msg%n</pattern>
+                </encoder>
+            </appender>
+        </sift>
+    </appender>
+
+    <!-- 按照每天生成日志文件 -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 当前活动日志文件名：用日期命名 -->
+        <file>${LOG_FILE_LOCATION}/MyLog%d{yyyy-MM-dd}.log</file>
+        <!-- 文件滚动策略根据%d{patter}中的“patter”而定，此处为每天产生一个文件 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 归档文件名“.zip或.gz结尾”,表示归档文件自动压缩 -->
+            <FileNamePattern>${LOG_FILE_LOCATION}/MyLog%d{yyyy-MM-dd}.log.zip</FileNamePattern>
+            <!--日志文件保留天数-->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <!--日志文件最大的大小-->
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <maxFileSize>10MB</maxFileSize>
+        </triggeringPolicy>
+        <encoder>
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+
+    <root level="debug">
+<!--        <appender-ref ref="FILE" />-->
+        <appender-ref ref="STDOUT" />
+<!--        <appender-ref ref="SIFT" />-->
+    </root>
+    <logger name="com.comeup.slflog.SpecificLogger" additivity="false" level="INFO">
+        <appender-ref ref="SIFT"/>
+    </logger>
+
+</configuration>

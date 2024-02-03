@@ -1,0 +1,149 @@
+//buildscript {
+//    repositories {
+//        maven {
+//            url = uri("https://plugins.gradle.org/m2/")
+//        }
+//    }
+//}
+buildscript {
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/public' } // 阿里云 Maven 镜像
+        maven { url 'https://maven.aliyun.com/repository/jcenter' } // 阿里云 JCenter 镜像
+        maven { url 'https://maven.aliyun.com/repository/google' } // 阿里云 Google 镜像
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' } // 阿里云 Gradle Plugin 镜像
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url "https://repo.spring.io/release" }
+        maven { url "https://repo.spring.io/milestone" }
+        maven { url "https://repo.spring.io/snapshot" }
+        gradlePluginPortal()
+    }
+
+}
+plugins {
+    id 'java'
+    id 'me.champeau.gradle.jmh' version '0.5.3'
+}
+
+configurations {
+    all*.resolutionStrategy {
+        dependencySubstitution {
+            all { DependencySubstitution substitution ->
+                substitution.useTarget(substitution.requested)
+            }
+        }
+    }
+}
+
+configurations.all {
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+    resolutionStrategy.cacheDynamicVersionsFor 0, 'seconds'
+}
+
+apply plugin: 'idea' // 如果你在使用 IntelliJ IDEA
+
+idea {
+    module {
+//        downloadJavadoc = true // 如果你也需要 Javadoc
+        downloadSources = true
+    }
+}
+
+
+group = 'com.comeup'
+version = '1.0-SNAPSHOT'
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+repositories {
+    maven { url 'https://maven.aliyun.com/repository/public' } // 阿里云 Maven 镜像
+    maven { url 'https://maven.aliyun.com/repository/jcenter' } // 阿里云 JCenter 镜像
+    maven { url 'https://maven.aliyun.com/repository/google' } // 阿里云 Google 镜像
+    maven { url 'https://maven.aliyun.com/repository/gradle-plugin' } // 阿里云 Gradle Plugin 镜像
+    maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+    maven { url "https://repo.spring.io/release" }
+    maven { url "https://repo.spring.io/milestone" }
+    maven { url "https://repo.spring.io/snapshot" }
+    gradlePluginPortal()
+}
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+dependencies {
+//    testImplementation platform('org.junit:junit-bom:5.9.1')
+//    testImplementation 'org.junit.jupiter:junit-jupiter'
+    // agent
+    implementation name: 'JavaUp-1.0-SNAPSHOT'
+
+    implementation('org.openjdk.jol:jol-core:0.17')
+    // excel
+    implementation('com.alibaba:fastjson:1.2.75')
+    implementation('com.alibaba:easyexcel:2.2.11')
+    implementation('com.fasterxml.jackson.module:jackson-module-jaxb-annotations:2.8.10')
+    // quasar
+    implementation('co.paralleluniverse:quasar-core:0.7.10')
+    // @Data
+    // api 与旧版的compile相同
+    // implementation 解决重复依赖问题。例如A依赖B，B依赖C，那么A里面将不能调用C的方法
+    // compileOnly 编译有效，打包无效。替代旧版的 provider
+    // runtimeOnly 打包有效，编译无效
+    // test、debug、release implementation：对应test、debug、release环境的implementation
+    compileOnly('org.projectlombok:lombok:1.18.24')
+    annotationProcessor('org.projectlombok:lombok:1.18.24')
+    // 操作
+    implementation('cn.hutool:hutool-all:5.8.0')
+    // 函数式编程 缓存 并发编程 字符串处理 集合类
+    implementation('com.google.guava:guava:20.0')
+    //mapstruct
+    implementation('org.mapstruct:mapstruct:1.5.2.Final')
+    annotationProcessor('org.mapstruct:mapstruct-processor:1.5.2.Final')
+    // jmh
+    testImplementation("org.openjdk.jmh:jmh-core:1.37")
+    testAnnotationProcessor("org.openjdk.jmh:jmh-generator-annprocess:1.37")
+    // disruptor
+    implementation('com.lmax:disruptor:3.4.4')
+
+    implementation("cglib:cglib:3.3.0")
+
+    implementation("org.springframework:spring-context:5.3.31")
+    implementation("org.springframework:spring-aspects:5.3.31")
+    // spring test 配合junit测试 test
+    implementation("org.springframework:spring-test:5.3.31")
+    implementation("javax.inject:javax.inject:1")
+
+    // test
+    implementation("org.junit.jupiter:junit-jupiter-engine:5.10.1")
+
+    implementation("com.yomahub:liteflow-spring:2.11.4.2")
+
+    implementation ('ch.qos.logback:logback-classic:1.2.3')
+}
+jmh {
+    // 指定基准测试应该运行多少次迭代
+    iterations = 10
+    // 指定每次迭代应该运行多长时间
+    timeOnIteration = '1s'
+    // 指定在基准测试开始之前，应该运行多少次热身迭代
+    warmupIterations = 5
+    // 指定每次热身迭代应该运行多长时间
+//    warmupTime = '1s'
+    // 指定应该使用多少个线程来运行基准测试
+    threads = 4
+    // 指定输出结果的格式，可以是 'text', 'csv', 'scsv', 'json', 'latex', 或 'gnuplot'
+    resultFormat = 'json'
+    // 指定输出结果的文件名
+//    result = "$buildDir/reports/jmh/result.json"
+    // 指定基准测试的模式，可以是 'Throughput', 'AverageTime', 'SampleTime', 或 'SingleShotTime'
+    benchmarkMode = ['Throughput']
+    // 指定在运行基准测试时是否应该打印额外的诊断输出
+//    verbose = 'NORMAL'
+}
+
+//test {
+//    useJUnitPlatform()
+//}
