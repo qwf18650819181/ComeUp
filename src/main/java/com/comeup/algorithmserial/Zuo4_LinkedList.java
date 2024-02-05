@@ -1,10 +1,13 @@
 package com.comeup.algorithmserial;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * @auth: qwf
  * @date: 2024年1月28日 0028
  * @description: 链表
  */
+@Slf4j
 public class Zuo4_LinkedList {
 
 
@@ -106,7 +109,7 @@ public class Zuo4_LinkedList {
         System.out.println(StackNode.node);
         System.out.println(StackNode.size);
 
-        System.out.println("====== 局部轮询反转链表 ======");
+        log.info("======局部轮询反转链表======");
 
         SingleNode singleNode1 = new SingleNode(5);
         singleNode1.setNext(new SingleNode(3)).setNext(new SingleNode(8)).setNext(new SingleNode(9)).setNext(new SingleNode(4)).setNext(new SingleNode(7)).setNext(new SingleNode(6));

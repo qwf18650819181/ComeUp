@@ -34,7 +34,7 @@ public class Main {
         AComponent a = (AComponent) applicationContext.getBean("AComponent");
         a.test();
 
-
+        log.info("====== 局部轮询反转链表 ======");
 
 //        A bean = applicationContext.getBean(A.class);
 //        System.out.println(bean);
