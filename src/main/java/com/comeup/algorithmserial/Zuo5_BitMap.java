@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * @auth: qwf
  * @date: 2024年1月28日 0028
- * @description: 链表
+ * @description: 位图 和 + - * /
  */
 @Slf4j
 public class Zuo5_BitMap {

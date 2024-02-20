@@ -49,8 +49,8 @@
 
     <root level="debug">
 <!--        <appender-ref ref="FILE" />-->
-        <appender-ref ref="STDOUT" />
-<!--        <appender-ref ref="SIFT" />-->
+<!--        <appender-ref ref="STDOUT" />-->
+        <appender-ref ref="SIFT" />
     </root>
     <logger name="com.comeup.slflog.SpecificLogger" additivity="false" level="INFO">
         <appender-ref ref="SIFT"/>
