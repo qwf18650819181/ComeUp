@@ -122,6 +122,14 @@ dependencies {
     implementation("com.yomahub:liteflow-spring:2.11.4.2")
 
     implementation ('ch.qos.logback:logback-classic:1.2.3')
+
+    // pdf
+    implementation('org.freemarker:freemarker:2.3.28')
+    implementation('com.itextpdf:itextpdf:5.5.13')
+    implementation('com.itextpdf.tool:xmlworker:5.5.13')
+    implementation('com.itextpdf:itext-asian:5.2.0')
+    implementation('org.xhtmlrenderer:flying-saucer-pdf:9.1.16')
+    implementation('org.bouncycastle:bcprov-jdk15on:1.56')
 }
 jmh {
     // 指定基准测试应该运行多少次迭代
