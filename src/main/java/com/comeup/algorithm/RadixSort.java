@@ -8,12 +8,11 @@ package com.comeup.algorithm;
  */
 public class RadixSort implements ISort {
     @Override
-    public int[] sort(int[] array) {
+    public void sort(int[] array) {
         int max = SortUtil.findMax(array);
         for (int i = 1; i < max; i *= 10) {
             radixSort(array, i);
         }
-        return array;
     }
 
     public void radixSort(int[] array, int base) {

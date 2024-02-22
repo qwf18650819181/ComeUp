@@ -1,8 +1,5 @@
 package com.comeup.algorithm;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.stream.IntStream;
 
 /**
@@ -14,6 +11,7 @@ import java.util.stream.IntStream;
  *  大于的数组下标放进一个队列里面??
  *
  *  time: O(n^2)
+ *  稳定
  */
 public class SelectionSort implements ISort {
 
@@ -25,11 +23,17 @@ public class SelectionSort implements ISort {
         return array;
     }
     @Override
-    public int[] sort(int[] array) {
+    public void sort(int[] array) {
         for (int i = 0; i < array.length - 1; i++) {
-            int minIndex = IntStream.range(i, array.length).reduce((a, b) -> array[a] > array[b] ? b : a).getAsInt();
-            SortUtil.swap(array, i, minIndex);
+            int min = i;
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[min] > array[j]) {
+                    min = j;
+                }
+            }
+            if (min != i) {
+                SortUtil.swap(array, min, i);
+            }
         }
-        return array;
     }
 }

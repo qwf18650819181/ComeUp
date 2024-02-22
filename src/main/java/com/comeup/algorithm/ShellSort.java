@@ -8,19 +8,18 @@ package com.comeup.algorithm;
  */
 public class ShellSort implements ISort {
     @Override
-    public int[] sort(int[] array) {
+    public void sort(int[] array) {
         for (int gap = array.length >> 1; gap > 0; gap >>= 1) {
             for (int i = gap; i < array.length; i++) {
                 int key = array[i];
                 int j = i;
-                while (j >= gap && array[j - gap] > key) {
+                while (j - gap >=0 && array[j - gap] > key) {
                     array[j] = array[j - gap];
                     j -= gap;
                 }
                 array[j] = key;
             }
         }
-        return array;
     }
     public int[] sort1(int[] array) {
         for (int gap = array.length >> 1; gap > 0; gap >>= 1) {

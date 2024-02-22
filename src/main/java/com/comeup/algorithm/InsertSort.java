@@ -8,16 +8,15 @@ package com.comeup.algorithm;
  */
 public class InsertSort implements ISort {
     @Override
-    public int[] sort(int[] array) {
+    public void sort(int[] array) {
         for (int i = 1; i < array.length; i++) {
-            int insert = array[i];
+            int insertKey = array[i];
             int j = i - 1;
-            while (j >= 0 && array[j] > insert) {
+            while(j >= 0 && array[j] > insertKey) {
                 array[j + 1] = array[j--];
             }
-            array[j + 1] = insert;
+            array[j + 1] = insertKey;
         }
-        return array;
     }
     public int[] sort1(int[] array) {
         for (int i = 1; i < array.length; i++) {

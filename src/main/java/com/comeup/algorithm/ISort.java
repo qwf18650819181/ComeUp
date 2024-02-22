@@ -7,5 +7,5 @@ package com.comeup.algorithm;
  */
 public interface ISort {
 
-    int[] sort(int[] array);
+    void sort(int[] array);
 }

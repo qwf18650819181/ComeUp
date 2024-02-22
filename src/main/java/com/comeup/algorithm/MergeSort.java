@@ -8,9 +8,8 @@ package com.comeup.algorithm;
  */
 public class MergeSort implements ISort {
     @Override
-    public int[] sort(int[] array) {
+    public void sort(int[] array) {
         mergeSort(array, 0, array.length - 1);
-        return array;
     }
 
     public void mergeSort(int[] array, Integer left, Integer right) {

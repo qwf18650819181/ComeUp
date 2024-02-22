@@ -12,9 +12,8 @@ import java.util.List;
  */
 public class BucketSort implements ISort {
     @Override
-    public int[] sort(int[] array) {
+    public void sort(int[] array) {
         bucketSort1(array, 3);
-        return array;
     }
 
     /**

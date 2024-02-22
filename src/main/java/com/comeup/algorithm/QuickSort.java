@@ -8,9 +8,8 @@ package com.comeup.algorithm;
  */
 public class QuickSort implements ISort {
     @Override
-    public int[] sort(int[] array) {
+    public void sort(int[] array) {
         quickSort(array, 0, array.length - 1);
-        return array;
     }
 
     public void quickSort(int[] array, int left, int right) {
