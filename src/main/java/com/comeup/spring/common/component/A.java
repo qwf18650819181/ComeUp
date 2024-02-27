@@ -11,9 +11,10 @@ import javax.annotation.PostConstruct;
 import javax.inject.Named;
 
 /**
- * @auth: qwf
- * @date: 2024年1月22日 0022
- * @description:
+ * @author: qwf
+ * @date: 2024年2月27日 0027
+ * @version: 1.0
+ * @description: TODO
  */
 @Named
 //@DependsOn("b")
@@ -40,6 +41,13 @@ public class A implements InitializingBean {
         System.out.println("a");
     }
 
+    /**
+     * @param :
+     * @return void
+     * @author qiu wanzi
+     * @description afterPropertiesSet
+     * @date 2024年2月27日 0027
+     */
     @Override
     public void afterPropertiesSet() throws Exception {
         LOGGER.info("a start 2");
@@ -47,7 +55,11 @@ public class A implements InitializingBean {
     }
 
     /**
-     * 产生循环依赖问题
+     * @param :
+     * @return void
+     * @author qiu wanzi
+     * @description 产生循环依赖问题
+     * @date 2024年2月27日 0027
      */
 //    @Async
 //    public void doSome() {
