@@ -1,7 +1,7 @@
-package com.comeup.spring;
+package com.comeup.spring.common;
 
-import com.comeup.spring.aspect.AComponent;
-import com.comeup.spring.condition.ACondition;
+import com.comeup.spring.common.aspect.AComponent;
+import com.comeup.spring.common.condition.ACondition;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -17,7 +17,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
  * @description:
  */
 @Configuration
-@ComponentScan("com.comeup.spring")
+@ComponentScan("com.comeup.spring.common")
 @EnableAsync
 @EnableAspectJAutoProxy
 @Slf4j

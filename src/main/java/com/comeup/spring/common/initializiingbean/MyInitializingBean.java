@@ -1,4 +1,4 @@
-package com.comeup.spring.initializiingbean;
+package com.comeup.spring.common.initializiingbean;
 
 import org.springframework.beans.factory.InitializingBean;
 

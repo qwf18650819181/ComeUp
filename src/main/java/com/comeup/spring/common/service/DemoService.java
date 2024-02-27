@@ -1,7 +1,4 @@
-package com.comeup.spring.service;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+package com.comeup.spring.common.service;
 
 /**
  * @auth: qwf

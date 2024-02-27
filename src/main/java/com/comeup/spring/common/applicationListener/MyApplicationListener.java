@@ -1,4 +1,4 @@
-package com.comeup.spring.applicationListener;
+package com.comeup.spring.common.applicationListener;
 
 import org.springframework.context.ApplicationListener;
 

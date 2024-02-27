@@ -1,6 +1,6 @@
-package com.comeup.spring.factorybean;
+package com.comeup.spring.common.factorybean;
 
-import com.comeup.spring.component.A;
+import com.comeup.spring.common.component.A;
 import org.springframework.beans.factory.FactoryBean;
 
 /**

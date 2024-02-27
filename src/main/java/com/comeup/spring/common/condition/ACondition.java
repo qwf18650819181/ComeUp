@@ -1,4 +1,4 @@
-package com.comeup.spring.condition;
+package com.comeup.spring.common.condition;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Condition;

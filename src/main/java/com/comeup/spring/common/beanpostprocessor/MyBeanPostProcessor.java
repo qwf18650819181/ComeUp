@@ -1,4 +1,4 @@
-package com.comeup.spring.beanpostprocessor;
+package com.comeup.spring.common.beanpostprocessor;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;

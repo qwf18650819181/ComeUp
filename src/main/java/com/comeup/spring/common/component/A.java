@@ -1,16 +1,11 @@
-package com.comeup.spring.component;
+package com.comeup.spring.common.component;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.core.env.Environment;
-import org.springframework.scheduling.annotation.Async;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
@@ -21,6 +16,7 @@ import javax.inject.Named;
  * @description:
  */
 @Named
+//@DependsOn("b")
 public class A implements InitializingBean {
 
     @Autowired

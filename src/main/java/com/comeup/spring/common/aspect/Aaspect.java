@@ -1,4 +1,4 @@
-package com.comeup.spring.aspect;
+package com.comeup.spring.common.aspect;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;

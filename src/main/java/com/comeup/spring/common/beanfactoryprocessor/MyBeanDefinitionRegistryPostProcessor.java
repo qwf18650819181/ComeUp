@@ -1,4 +1,4 @@
-package com.comeup.spring.beanfactoryprocessor;
+package com.comeup.spring.common.beanfactoryprocessor;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;

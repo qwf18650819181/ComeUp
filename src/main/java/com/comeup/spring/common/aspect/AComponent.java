@@ -1,4 +1,4 @@
-package com.comeup.spring.aspect;
+package com.comeup.spring.common.aspect;
 
 import javax.inject.Named;
 
