@@ -46,11 +46,17 @@
         </encoder>
     </appender>
 
+    <appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="SIFT" />
+        <queueSize>500</queueSize>
+        <discardingThreshold>0</discardingThreshold>
+    </appender>
 
     <root level="debug">
 <!--        <appender-ref ref="FILE" />-->
 <!--        <appender-ref ref="STDOUT" />-->
-        <appender-ref ref="SIFT" />
+<!--        <appender-ref ref="SIFT" />-->
+        <appender-ref ref="ASYNC" />
     </root>
     <logger name="com.comeup.slflog.SpecificLogger" additivity="false" level="INFO">
         <appender-ref ref="SIFT"/>

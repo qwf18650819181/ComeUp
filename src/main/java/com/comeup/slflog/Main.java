@@ -26,11 +26,11 @@ public class Main {
 
         MDC.put("discriminator", "STDOUT1");
 
-        LOGGER.info(DB_MARKER, "marker");
+        log.info(DB_MARKER, "marker");
         MDC.put("discriminator", "STDOUT2");
-        LOGGER.warn("LOGGER");
-        LOGGER.info("logger");
-        LOGGER.info("{}", LocalDateTime.now());
+        log.warn("LOGGER");
+        log.info("logger");
+        log.info("{}", LocalDateTime.now());
 
         SpecificLogger specificLogger = new SpecificLogger();
         specificLogger.testLog();
@@ -45,8 +45,7 @@ public class Main {
             log.error("失败错误异常", e);
         }
         log.warn("[参数] Main main request: {} timestamp: {}", JSON.toJSONString(specificLogger), LocalDateTime.now());
-
-
+        System.out.println("success");
     }
 
 

@@ -1,14 +1,17 @@
 package com.comeup.spring.common.component;
 
+import com.comeup.spring.common.initializiingbean.MyInitializingBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ApplicationObjectSupport;
 import org.springframework.core.env.Environment;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
+import java.util.Objects;
 
 /**
  * @author: qwf
@@ -18,7 +21,7 @@ import javax.inject.Named;
  */
 @Named
 //@DependsOn("b")
-public class A implements InitializingBean {
+public class A extends ApplicationObjectSupport implements InitializingBean  {
 
     @Autowired
     private B b;
@@ -51,6 +54,7 @@ public class A implements InitializingBean {
     @Override
     public void afterPropertiesSet() throws Exception {
         LOGGER.info("a start 2");
+        MyInitializingBean bean = Objects.requireNonNull(this.getApplicationContext()).getBean(MyInitializingBean.class);
         System.out.println("a");
     }
 

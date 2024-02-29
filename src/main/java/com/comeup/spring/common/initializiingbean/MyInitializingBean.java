@@ -1,9 +1,12 @@
 package com.comeup.spring.common.initializiingbean;
 
+import com.comeup.spring.common.aspect.AComponent;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.context.support.ApplicationObjectSupport;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
+import java.util.Objects;
 
 /**
  * @auth: qwf
@@ -14,9 +17,10 @@ import javax.inject.Named;
  * InitializingBean 是spring扩展
  */
 @Named
-public class MyInitializingBean implements InitializingBean {
+public class MyInitializingBean extends ApplicationObjectSupport implements InitializingBean  {
     @Override
     public void afterPropertiesSet() throws Exception {
+        AComponent bean = Objects.requireNonNull(this.getApplicationContext()).getBean(AComponent.class);
         System.out.println("MyInitializingBean afterPropertiesSet");
     }
 
