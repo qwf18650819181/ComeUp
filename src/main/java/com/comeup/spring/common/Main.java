@@ -1,12 +1,10 @@
 package com.comeup.spring.common;
 
 import com.comeup.spring.common.aspect.AComponent;
-import com.comeup.spring.common.component.A;
 import com.comeup.spring.common.condition.ACondition;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
@@ -31,10 +29,10 @@ public class Main {
 //        return new MyFactoryBean();
 //    }
 
-    @Bean
-    public A a2() {
-        return new A();
-    }
+//    @Bean
+//    public A a2() {
+//        return new A();
+//    }
 
 
     public static void main(String[] args) {
