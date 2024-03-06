@@ -9,7 +9,7 @@ import java.lang.reflect.Proxy;
  * @date: 2024年1月5日 0005
  * @description:
  */
-public class JDKProxy implements IJDKProsy{
+public class JDKProxy implements IJDKProxy {
 
     @Override
     public void move() {
@@ -21,7 +21,7 @@ public class JDKProxy implements IJDKProsy{
     public static void main(String[] args) {
 
         System.getProperties().put("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
-        IJDKProsy jdkProxy = (JDKProxy) Proxy.newProxyInstance(JDKProxy.class.getClassLoader(), new Class[]{IJDKProsy.class}, new MyInvocationHandler(new JDKProxy()));
+        IJDKProxy jdkProxy = (IJDKProxy) Proxy.newProxyInstance(JDKProxy.class.getClassLoader(), new Class[]{IJDKProxy.class}, new MyInvocationHandler(new JDKProxy()));
         jdkProxy.move();
 
     }
