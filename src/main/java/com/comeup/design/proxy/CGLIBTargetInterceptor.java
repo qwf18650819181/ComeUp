@@ -1,5 +1,6 @@
 package com.comeup.design.proxy;
 
+import net.sf.cglib.core.DebuggingClassWriter;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
@@ -20,7 +21,7 @@ public class CGLIBTargetInterceptor implements MethodInterceptor {
         return result;
     }
     public static void main(String[] args) {
-
+        System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, "/cglib");
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(CGLIBTargetObject.class);
         enhancer.setCallback(new CGLIBTargetInterceptor());
