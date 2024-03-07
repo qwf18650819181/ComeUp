@@ -9,7 +9,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
  * @auth: qwf
@@ -17,8 +16,8 @@ import org.springframework.scheduling.annotation.EnableAsync;
  * @description:
  */
 @Configuration
-@ComponentScan("com.comeup.spring.common")
-@EnableAsync
+@ComponentScan("com.comeup.spring.common.aspect")
+//@EnableAsync
 @EnableAspectJAutoProxy
 @Slf4j
 @Conditional(ACondition.class)
