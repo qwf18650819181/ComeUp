@@ -130,6 +130,12 @@ dependencies {
     implementation('com.itextpdf:itext-asian:5.2.0')
     implementation('org.xhtmlrenderer:flying-saucer-pdf:9.1.16')
     implementation('org.bouncycastle:bcprov-jdk15on:1.56')
+
+
+    implementation('javax.validation:validation-api:2.0.1.Final')
+
+
+
 }
 jmh {
     // 指定基准测试应该运行多少次迭代
