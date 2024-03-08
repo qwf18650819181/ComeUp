@@ -26,10 +26,10 @@ public class Main {
         person.setBankEmail("");
 
 
-        boolean validate = new ChainValidator<>(person)
-                .add(p -> p.getName() != null && !p.getName().isEmpty(), "姓名不能为空")
-                .add(p -> p.getAge() > 18, "年龄必须大于18岁")
-                .validate();
+        boolean validate = ChainValidator.newInstance(person)
+                .condition(p -> p.getName() != null && !p.getName().isEmpty(), "姓名不能为空")
+                .condition(p -> p.getAge() > 18, "年龄必须大于18岁")
+                .doValid();
 
         if (validate) {
             System.out.println("success");

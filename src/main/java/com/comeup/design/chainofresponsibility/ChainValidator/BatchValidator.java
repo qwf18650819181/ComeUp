@@ -16,6 +16,13 @@ public class BatchValidator {
 
     private final List<String> ERROR_LIST = new ArrayList<>();
 
+    private BatchValidator() {
+    }
+
+    public static BatchValidator newInstance() {
+        return new BatchValidator();
+    }
+
     public <T> BatchValidator valid(@Nullable T object, Predicate<T> predicate, String message) {
         if (predicate.test(object)) {
             ERROR_LIST.add(message);

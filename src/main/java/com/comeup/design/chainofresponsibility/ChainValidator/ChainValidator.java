@@ -1,7 +1,6 @@
 package com.comeup.design.chainofresponsibility.ChainValidator;
 
 
-import javax.xml.bind.ValidationException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
@@ -16,19 +15,24 @@ public class ChainValidator<T> {
     private T target;
     private final List<Validator<T>> validators = new ArrayList<>();
 
-    public ChainValidator(T target) {
-        this.target = target;
+    private ChainValidator() {
     }
 
-    public ChainValidator<T> add(Predicate<T> predicate, String message) {
+    public static <T> ChainValidator<T> newInstance(T target) {
+        ChainValidator<T> chainValidator = new ChainValidator<>();
+        chainValidator.target = target;
+        return chainValidator;
+    }
+
+    public ChainValidator<T> condition(Predicate<T> predicate, String message) {
         validators.add(new Validator<>(predicate, message));
         return this;
     }
 
-    public boolean validate() throws ValidationException {
+    public boolean doValid() throws ChainValidationException {
         for (Validator<T> validator : validators) {
             if (!validator.predicate.test(target)) {
-                throw new ValidationException(validator.message);
+                throw new ChainValidationException(validator.message);
             }
         }
         return true;
