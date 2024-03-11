@@ -112,6 +112,12 @@ dependencies {
 
     implementation("org.springframework:spring-context:5.3.31")
     implementation("org.springframework:spring-aspects:5.3.31")
+    implementation('org.springframework:spring-tx:5.3.31')
+
+    implementation('org.springframework:spring-orm:5.3.31') // Spring ORM，包含对 JPA 的支持
+    implementation('org.hibernate:hibernate-core:5.4.32.Final') // Hibernate，一个 JPA 实现
+    implementation('com.zaxxer:HikariCP:4.0.3')
+    implementation('mysql:mysql-connector-java:8.0.23')
     // spring test 配合junit测试 test
     implementation("org.springframework:spring-test:5.3.31")
     implementation("javax.inject:javax.inject:1")

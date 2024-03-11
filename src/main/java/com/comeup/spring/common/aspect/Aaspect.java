@@ -3,6 +3,8 @@ package com.comeup.spring.common.aspect;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -25,6 +27,16 @@ public class Aaspect {
     @After("execution(* AComponent.test(..))")
     public void afterAdvice(JoinPoint joinPoint) {
         System.out.println("Before executing " + joinPoint.getSignature().getName());
+    }
+
+    @AfterThrowing("execution(* AComponent.test(..))")
+    public void afterThrowing(JoinPoint joinPoint) {
+        System.out.println("afterThrowing executing " + joinPoint.getSignature().getName());
+    }
+
+    @AfterReturning("execution(* AComponent.test(..))")
+    public void afterReturning(JoinPoint joinPoint) {
+        System.out.println("afterReturning executing " + joinPoint.getSignature().getName());
     }
 
     @Around("execution(* AComponent.test(..))")
