@@ -1,4 +1,4 @@
-package com.comeup.leecode;
+package com.comeup.leetcode;
 
 import java.util.ArrayList;
 import java.util.Comparator;

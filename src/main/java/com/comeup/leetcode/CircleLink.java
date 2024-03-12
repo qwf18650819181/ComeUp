@@ -1,7 +1,4 @@
-package com.comeup.leecode;
-
-import java.util.HashSet;
-import java.util.Set;
+package com.comeup.leetcode;
 
 /**
  * @auth: qwf

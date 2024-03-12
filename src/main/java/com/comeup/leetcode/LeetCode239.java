@@ -1,4 +1,4 @@
-package com.comeup.leecode;
+package com.comeup.leetcode;
 
 import org.junit.jupiter.api.Test;
 

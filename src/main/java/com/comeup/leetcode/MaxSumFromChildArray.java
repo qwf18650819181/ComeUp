@@ -1,10 +1,7 @@
-package com.comeup.leecode;
+package com.comeup.leetcode;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-import java.util.OptionalInt;
 
 /**
  * @auth: qwf
