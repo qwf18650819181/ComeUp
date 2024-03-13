@@ -1,7 +1,7 @@
 package com.comeup.spring.common;
 
 import com.comeup.spring.common.condition.ACondition;
-import com.comeup.spring.common.transaction.MyTransaction;
+import com.comeup.spring.common.validate.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -16,7 +16,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
  * @description:
  */
 @Configuration
-@ComponentScan("com.comeup.spring.common.transaction")
+@ComponentScan("com.comeup.spring.common.validate")
 //@EnableAsync
 @EnableAspectJAutoProxy
 @Slf4j
@@ -38,10 +38,11 @@ public class Main {
     public static void main(String[] args) {
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(Main.class);
         log.info("logger");
-        MyTransaction myTransaction = applicationContext.getBean(MyTransaction.class);
-        myTransaction.test();
+        UserService userService = applicationContext.getBean(UserService.class);
+        userService.test();
+//        MyTransaction myTransaction = applicationContext.getBean(MyTransaction.class);
+//        myTransaction.test();
 
-        log.info("====== 局部轮询反转链表 ======");
 
 //        A bean = applicationContext.getBean(A.class);
 //        System.out.println(bean);
