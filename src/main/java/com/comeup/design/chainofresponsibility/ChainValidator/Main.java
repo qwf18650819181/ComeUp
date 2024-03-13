@@ -29,7 +29,7 @@ public class Main {
         boolean validate = ChainValidator.newInstance(person)
                 .condition(p -> p.getName() != null && !p.getName().isEmpty(), "姓名不能为空")
                 .condition(p -> p.getAge() > 18, "年龄必须大于18岁")
-                .doValid();
+                .validSuccess();
 
         if (validate) {
             System.out.println("success");

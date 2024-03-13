@@ -96,7 +96,7 @@ dependencies {
     compileOnly('org.projectlombok:lombok:1.18.24')
     annotationProcessor('org.projectlombok:lombok:1.18.24')
     // 操作
-    implementation('cn.hutool:hutool-all:5.8.0')
+    implementation('cn.hutool:hutool-all:5.8.26')
     // 函数式编程 缓存 并发编程 字符串处理 集合类
     implementation('com.google.guava:guava:20.0')
     //mapstruct
