@@ -82,15 +82,6 @@ public class LeetCode128 {
         return maxCount.get();
     }
 
-    @Data
-    public static class Node {
-        int val;
-        Node next;
-
-        public Node(int val) {
-            this.val = val;
-        }
-    }
 
 
 }
