@@ -1,6 +1,9 @@
 package com.comeup.design.chainofresponsibility.ChainValidator;
 
 
+import cn.hutool.core.exceptions.ValidateException;
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
@@ -10,7 +13,8 @@ import java.util.function.Predicate;
  * @description Note: 链式校验器 一个失败中断返回 aop校验????
  * @date 2024年3月7日 0007
  */
-public class ChainValidator<T> {
+@Slf4j
+public final class ChainValidator<T> {
 
     private T target;
     private final List<Validator<T>> validators = new ArrayList<>();
@@ -29,28 +33,43 @@ public class ChainValidator<T> {
         return this;
     }
 
-    public boolean doValid() throws ChainValidationException {
+    public void valid() {
         for (Validator<T> validator : validators) {
-            if (!validator.predicate.test(target)) {
-                throw new ChainValidationException(validator.message);
+            if (validator.predicate.test(target)) {
+                log.error("验证失败: " + validator.message);
+                throw new ValidateException(validator.message);
+            }
+        }
+    }
+
+    public boolean validSuccess() {
+        for (Validator<T> validator : validators) {
+            if (validator.predicate.test(target)) {
+                log.error("验证失败: " + validator.message);
+                return false;
             }
         }
         return true;
     }
 
-    private static class Validator<T> {
-        private Predicate<T> predicate;
-        private String message;
+    public String validWithMessage() {
+        for (Validator<T> validator : validators) {
+            if (validator.predicate.test(target)) {
+                log.error("验证失败: " + validator.message);
+                return validator.message;
+            }
+        }
+        return "";
+    }
 
-        public Validator(Predicate<T> predicate, String message) {
+    private static final class Validator<T> {
+        private final Predicate<T> predicate;
+        private final String message;
+
+        private Validator(Predicate<T> predicate, String message) {
             this.predicate = predicate;
             this.message = message;
         }
     }
 
-    public static class ChainValidationException extends RuntimeException {
-        public ChainValidationException(String message) {
-            super(message);
-        }
-    }
 }
