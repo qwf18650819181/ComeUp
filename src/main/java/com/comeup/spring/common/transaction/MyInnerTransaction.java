@@ -1,6 +1,5 @@
 package com.comeup.spring.common.transaction;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -15,28 +14,19 @@ import org.springframework.transaction.annotation.Transactional;
  * @version: 1.0
  */
 @Component
-@Slf4j
-public class MyTransaction {
+public class MyInnerTransaction {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
-    @Autowired
-    private MyInnerTransaction myInnerTransaction;
 
     @Transactional(propagation = Propagation.REQUIRED)
     public void test(){
-        System.out.println("1123 start");
+        System.out.println("1123 Inner start");
 
         jdbcTemplate.execute(" update sa_store set update_date = now() ");
 
-        try {
-            myInnerTransaction.test();
-        } catch (Exception e) {
-            log.error("inner error", e);
-        }
-
-        System.out.println("1123 end ");
-
+//        int i = 1 / 0;
+        System.out.println("1123 Inner end ");
 
     }
 

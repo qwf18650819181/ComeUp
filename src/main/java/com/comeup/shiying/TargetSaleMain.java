@@ -7,11 +7,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
@@ -25,6 +29,29 @@ import java.util.concurrent.atomic.AtomicReference;
 public class TargetSaleMain {
 
     public static void main(String[] args) {
+
+
+        LocalDate thisYearDateLine = LocalDate.parse("2024-02-01", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+
+        System.out.println(thisYearDateLine);
+
+
+
+
+
+        BaseListResponse body = JSON.parseObject("{\"content\":[{\"configSeasonId\":40,\"season\":4,\"seasonName\":\"春秋季\",\"beginDateDto\":{\"month\":\"1\",\"day\":\"1\"},\"endDateDto\":{\"month\":\"9\",\"day\":\"30\"},\"thisYearDateDto\":{\"month\":\"2\",\"day\":\"1\"},\"thisYearDays\":90,\"createBy\":\"SPXT-11251\",\"createDate\":\"2024-01-12 10:00:03\",\"updateBy\":\"admin\",\"updateDate\":\"2024-03-13 17:29:27\"},{\"configSeasonId\":41,\"season\":5,\"seasonName\":\"夏季\",\"beginDateDto\":{\"month\":\"4\",\"day\":\"1\"},\"endDateDto\":{\"month\":\"7\",\"day\":\"1\"},\"thisYearDateDto\":{\"month\":\"6\",\"day\":\"1\"},\"thisYearDays\":90,\"createBy\":\"SPXT-11251\",\"createDate\":\"2024-01-12 10:00:03\",\"updateBy\":\"SPXT-11251\",\"updateDate\":\"2024-01-12 10:00:03\"},{\"configSeasonId\":42,\"season\":7,\"seasonName\":\"冬季\",\"beginDateDto\":{\"month\":\"10\",\"day\":\"1\"},\"endDateDto\":{\"month\":\"12\",\"day\":\"31\"},\"thisYearDateDto\":{\"month\":\"11\",\"day\":\"1\"},\"thisYearDays\":90,\"createBy\":\"SPXT-11251\",\"createDate\":\"2024-01-12 10:00:03\",\"updateBy\":\"SPXT-11251\",\"updateDate\":\"2024-01-12 10:00:03\"},{\"configSeasonId\":43,\"season\":8,\"seasonName\":\"四季\",\"beginDateDto\":{\"month\":\"1\",\"day\":\"1\"},\"endDateDto\":{\"month\":\"12\",\"day\":\"31\"},\"thisYearDateDto\":{\"month\":\"4\",\"day\":\"1\"},\"thisYearDays\":90,\"createBy\":\"SPXT-11251\",\"createDate\":\"2024-01-12 10:00:03\",\"updateBy\":\"SPXT-11251\",\"updateDate\":\"2024-01-12 10:00:03\"},{\"configSeasonId\":44,\"season\":4,\"seasonName\":\"春秋季\",\"beginDateDto\":{\"month\":\"1\",\"day\":\"1\"},\"endDateDto\":{\"month\":\"9\",\"day\":\"30\"},\"thisYearDateDto\":{\"month\":\"2\",\"day\":\"1\"},\"thisYearDays\":90,\"createBy\":\"SPXT-11251\",\"createDate\":\"2024-01-12 10:00:03\",\"updateBy\":\"SPXT-11251\",\"updateDate\":\"2024-01-12 10:00:03\"},{\"configSeasonId\":45,\"season\":5,\"seasonName\":\"夏季\",\"beginDateDto\":{\"month\":\"4\",\"day\":\"1\"},\"endDateDto\":{\"month\":\"7\",\"day\":\"1\"},\"thisYearDateDto\":{\"month\":\"6\",\"day\":\"1\"},\"thisYearDays\":90,\"createBy\":\"SPXT-11251\",\"createDate\":\"2024-01-12 10:00:03\",\"updateBy\":\"SPXT-11251\",\"updateDate\":\"2024-01-12 10:00:03\"},{\"configSeasonId\":46,\"season\":7,\"seasonName\":\"冬季\",\"beginDateDto\":{\"month\":\"10\",\"day\":\"1\"},\"endDateDto\":{\"month\":\"12\",\"day\":\"31\"},\"thisYearDateDto\":{\"month\":\"11\",\"day\":\"1\"},\"thisYearDays\":90,\"createBy\":\"SPXT-11251\",\"createDate\":\"2024-01-12 10:00:03\",\"updateBy\":\"SPXT-11251\",\"updateDate\":\"2024-01-12 10:00:03\"},{\"configSeasonId\":47,\"season\":8,\"seasonName\":\"四季\",\"beginDateDto\":{\"month\":\"1\",\"day\":\"1\"},\"endDateDto\":{\"month\":\"12\",\"day\":\"31\"},\"thisYearDateDto\":{\"month\":\"4\",\"day\":\"1\"},\"thisYearDays\":90,\"createBy\":\"SPXT-11251\",\"createDate\":\"2024-01-12 10:00:03\",\"updateBy\":\"SPXT-11251\",\"updateDate\":\"2024-01-12 10:00:03\"}],\"totalCount\":8}", BaseListResponse.class);
+
+        if (Objects.nonNull(body) && !CollectionUtils.isEmpty(body.getContent())) {
+            log.info("[rpc响应] ScmApiService getSeasonConfigsByLocation body: {} timestamp: {}", JSON.toJSONString(body), LocalDateTime.now());
+            List<BdReplenishmentSeasonConfigResponse> bdReplenishmentSeasonConfigResponses = Json.listToObject(body.getContent(), BdReplenishmentSeasonConfigResponse.class);
+            System.out.println(bdReplenishmentSeasonConfigResponses);
+        }
+
+
+
+
+
+
         String json = "[\n" +
                 "    {\n" +
                 "        \"0\": \"店铺\",\n" +
