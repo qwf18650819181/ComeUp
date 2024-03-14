@@ -36,7 +36,7 @@ public class LeetCode25 {
         listNode3.next = listNode4;
         listNode4.next = listNode5;
         ListNode listNode = reverseKGroup(listNode1, 2);
-
+        System.out.println(listNode);
 
     }
     @Data
@@ -50,6 +50,53 @@ public class LeetCode25 {
     }
 
     public static ListNode reverseKGroup(ListNode head, int k) {
+        if (k < 2) return head;
+        ListNode endNode = findEndNode(head, k);
+        if (endNode == null) return head;
+        ListNode finalHead = endNode;
+        ListNode thisEnd = head;
+
+        ListNode pre = null;
+        ListNode cur = head;
+        ListNode next = cur;
+        while (pre != endNode) {
+            next = next.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+
+        while (endNode != null) {
+            ListNode beginNode = cur;
+            endNode = findEndNode(cur, k);
+            if (endNode == null) {
+                thisEnd.next = cur;
+            } else {
+                pre = null;
+                while (pre != endNode) {
+                    next = next.next;
+                    cur.next = pre;
+                    pre = cur;
+                    cur = next;
+                }
+                thisEnd.next = endNode;
+                thisEnd = beginNode;
+            }
+        }
+        return finalHead;
+    }
+
+    private static ListNode findEndNode(ListNode head, int k) {
+        int i = 1;
+        while (head != null) {
+            head = head.next;
+            i++;
+            if (i == k) return head;
+        }
+        return head;
+    }
+
+    public static ListNode reverseKGroup1(ListNode head, int k) {
         if (k <= 1) return head;
         ListNode cur = head;
         ListNode nextEnd = checkCapacity(cur, k);
