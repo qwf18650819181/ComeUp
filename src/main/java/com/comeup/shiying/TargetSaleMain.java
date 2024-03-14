@@ -31,6 +31,11 @@ public class TargetSaleMain {
     public static void main(String[] args) {
 
 
+        double i = 10 / 30d * 100;
+        System.out.println(i);
+
+
+
         LocalDate thisYearDateLine = LocalDate.parse("2024-02-01", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
         System.out.println(thisYearDateLine);

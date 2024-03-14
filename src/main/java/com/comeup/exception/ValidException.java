@@ -7,16 +7,16 @@ package com.comeup.exception;
  * @date: 2024年3月14日 0014
  * @version: 1.0
  */
-public class BusinessException extends BaseException {
+public class ValidException extends BaseException {
 
-    public BusinessException() {
+    public ValidException() {
     }
 
-    public BusinessException(String message) {
+    public ValidException(String message) {
         super(message);
     }
 
-    public BusinessException(String message, Throwable cause) {
+    public ValidException(String message, Throwable cause) {
         super(message, cause);
     }
 }
