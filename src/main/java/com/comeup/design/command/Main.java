@@ -1,7 +1,8 @@
 package com.comeup.design.command;
 
 /**
- * 功能描述:
+ * 功能描述:   note: 命令模式 + 备忘录模式 = 功能撤销
+ *              命令模式 + 组合模式 = 宏命令
  *
  * @author: qiu wanzi
  * @date: 2024年3月11日 0011

@@ -8,6 +8,7 @@ import cn.hutool.core.lang.Snowflake;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.ReflectUtil;
 import cn.hutool.core.util.StrUtil;
+import lombok.Data;
 
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
@@ -94,6 +95,15 @@ public class Main {
         System.out.println("================");
 
 
+    }
+
+    @Data
+    public static class SubPerson {
+        private String name;
+        private int age;
+        private String sex;
+        private String address;
+        private String userAddress;
     }
 
 
