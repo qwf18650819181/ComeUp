@@ -13,6 +13,8 @@ import java.nio.file.Paths;
 public class Main {
 
     public static void main(String[] args) throws Exception {
+
+        // note : 非阻塞只针对网络编程 文件io还是阻塞的
         Path sourceResource = Paths.get("D:\\source.text");
         Path destinationResource = Paths.get("D:\\BIO_destination.text");
 
