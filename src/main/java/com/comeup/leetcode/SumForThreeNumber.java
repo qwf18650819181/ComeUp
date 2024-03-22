@@ -29,7 +29,7 @@ class Solution {
      * @param nums
      * @return
      */
-    public static List<List<Integer>> threeSum(int[] nums) {
+    public List<List<Integer>> threeSum(int[] nums) {
         if (nums.length < 3) return new ArrayList<>();
         List<List<Integer>> list = new ArrayList<>();
         int length = nums.length;
@@ -57,7 +57,7 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        List<List<Integer>> lists = threeSum(new int[]{-1, 0, 1, 2, -1, -4});
+        List<List<Integer>> lists = new Solution().threeSum(new int[]{-1, 0, 1, 2, -1, -4});
         System.out.println(lists);
     }
 }
