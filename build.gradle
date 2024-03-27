@@ -141,6 +141,7 @@ dependencies {
     implementation('javax.validation:validation-api:2.0.1.Final')
     implementation("net.sf.oval:oval:3.2.1")
 
+    implementation 'io.netty:netty-all:4.1.69.Final'
 
 
 

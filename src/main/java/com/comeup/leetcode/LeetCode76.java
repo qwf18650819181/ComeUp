@@ -34,10 +34,8 @@ import java.util.Map;
 public class LeetCode76 {
 
     public static void main(String[] args) {
-
         LeetCode76 leetCode76 = new LeetCode76();
         System.out.println(leetCode76.minWindow("bba", "ab"));
-
     }
 
     /**
@@ -48,17 +46,15 @@ public class LeetCode76 {
      */
 
     public String minWindow(String source, String target) {
-        if (canFindTarget(source, target))
-            return "";
         String minString = "";
+        if (cannotFindTarget(source, target)) {
+            return minString;
+        }
         int[] indexes = substringIndex(source, target);
         if (indexes == null) return minString;
-
         int leftIndex = indexes[0];
         int rightIndex = indexes[1];
-
         minString = source.substring(leftIndex, rightIndex + 1);
-
         String recursiveString = source.substring(leftIndex);
         rightIndex = rightIndex - leftIndex;
         leftIndex = 1;
@@ -83,7 +79,7 @@ public class LeetCode76 {
         return minString;
     }
 
-    private boolean canFindTarget(String source, String target) {
+    private boolean cannotFindTarget(String source, String target) {
         return source == null || target == null || source.isEmpty() || target.isEmpty() || source.length() < target.length();
     }
 
