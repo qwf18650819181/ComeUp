@@ -1,10 +1,12 @@
 package com.comeup.shiying;
 
+import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSON;
 
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 /**
@@ -61,5 +63,16 @@ public class Main {
         downloadResponse.setTotalCount(200L);
         downloadResponse.setDataJsonStr(JSON.toJSONString(customExcelResponse));
         System.out.println(JSON.toJSONString(downloadResponse));
+
+        System.out.println(isDecimal("123"));
+        System.out.println(isDecimal("123.4"));
+        System.out.println(isDecimal("0.4"));
+
     }
+    private static final Pattern DECIMAL_PATTERN = Pattern.compile("-?\\d+(\\.\\d+)?");
+
+    private static boolean isDecimal(String str) {
+        return !StrUtil.isEmpty(str) && DECIMAL_PATTERN.matcher(str).matches();
+    }
+
 }
