@@ -1744,7 +1744,7 @@ public class ThreadPoolExecutor extends AbstractExecutorService {
         return unit.convert(keepAliveTime, TimeUnit.NANOSECONDS);
     }
 
-    /* User-level queue utilities */
+    /* Seller-level queue utilities */
 
     /**
      * Returns the task queue used by this executor. Access to the

@@ -36,7 +36,7 @@ public class UserService {
         if (errors.hasErrors()) {
             errors.getAllErrors().forEach(System.out::println);
         } else {
-            System.out.println("User is valid.");
+            System.out.println("Seller is valid.");
         }
 
         ovalValid(user);
