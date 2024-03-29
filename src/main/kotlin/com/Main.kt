@@ -10,12 +10,7 @@ import com.comeup.kotlin.Person
  */
 fun main() {
     println("why not have a try")
-
-    val person = Person(0, "kaka", 15);
+    val person = Person(0, "kaka", 15)
     println(person)
-
 }
-class Main {
-
-
-}
+class Main

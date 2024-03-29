@@ -1,4 +1,4 @@
-package com.comeup.io;
+package com.comeup.io.file;
 
 import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;

@@ -1,4 +1,4 @@
-package com.comeup.io;
+package com.comeup.io.file;
 
 import java.io.File;
 import java.io.FileInputStream;
