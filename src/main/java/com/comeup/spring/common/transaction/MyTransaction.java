@@ -1,5 +1,6 @@
 package com.comeup.spring.common.transaction;
 
+import com.comeup.spring.common.aop.OperaLog;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -23,6 +24,7 @@ public class MyTransaction {
     @Autowired
     private MyInnerTransaction myInnerTransaction;
 
+    @OperaLog("测试")
     @Transactional(propagation = Propagation.REQUIRED)
     public void test(){
         System.out.println("1123 start");

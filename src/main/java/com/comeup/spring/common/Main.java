@@ -16,7 +16,8 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
  * @description:
  */
 @Configuration
-@ComponentScan("com.comeup.spring.common.transaction")
+//@ComponentScan("com.comeup.spring.common.transaction")
+@ComponentScan
 //@EnableAsync
 @EnableAspectJAutoProxy
 @Slf4j
@@ -44,11 +45,14 @@ public class Main {
         myTransaction.test();
 
 
+
 //        A bean = applicationContext.getBean(A.class);
 //        System.out.println(bean);
 //        System.out.println(bean.getProperty("user.dir"));
 //        System.out.println(bean.getProperty("SESSIONNAME"));
     }
+
+
 
 
 
