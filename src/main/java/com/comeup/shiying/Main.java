@@ -3,6 +3,7 @@ package com.comeup.shiying;
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSON;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -16,8 +17,24 @@ import java.util.stream.Collectors;
  */
 public class Main {
 
-    public static void main(String[] args) {
+    private static BigDecimal calculateAccPriceByEstimateDearloverPrice(BigDecimal estimateDearloverPrice) {
+        if (estimateDearloverPrice.compareTo(new BigDecimal("3")) >= 0) {
+            return estimateDearloverPrice;
+        }
+        double finalPrice;
+        double integerPart = Math.floor(estimateDearloverPrice.doubleValue());
+        double fractionPart = estimateDearloverPrice.doubleValue() - integerPart;
+        if (fractionPart <= 0.5) {
+            finalPrice = integerPart + 0.98;
+        } else {
+            finalPrice = estimateDearloverPrice.doubleValue() + 1;
+        }
+        return new BigDecimal(String.valueOf(finalPrice));
+    }
 
+    public static void main(String[] args) {
+        BigDecimal bigDecimal = calculateAccPriceByEstimateDearloverPrice(new BigDecimal("2.66"));
+        System.out.println(bigDecimal);
         String[] arr = {
                 "P2017#Chestnut",
                 "P207#Beige",
