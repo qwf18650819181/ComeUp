@@ -22,7 +22,7 @@ buildscript {
 plugins {
     id 'java'
     id("org.jetbrains.kotlin.jvm") version "1.9.20"
-    id 'me.champeau.gradle.jmh' version '0.5.3'
+//    id 'me.champeau.gradle.jmh' version '0.5.3'
 }
 
 configurations {
@@ -146,26 +146,26 @@ dependencies {
     implementation 'io.netty:netty-all:4.1.69.Final'
 }
 
-jmh {
-    // 指定基准测试应该运行多少次迭代
-    iterations = 10
-    // 指定每次迭代应该运行多长时间
-    timeOnIteration = '1s'
-    // 指定在基准测试开始之前，应该运行多少次热身迭代
-    warmupIterations = 5
-    // 指定每次热身迭代应该运行多长时间
-//    warmupTime = '1s'
-    // 指定应该使用多少个线程来运行基准测试
-    threads = 4
-    // 指定输出结果的格式，可以是 'text', 'csv', 'scsv', 'json', 'latex', 或 'gnuplot'
-    resultFormat = 'json'
-    // 指定输出结果的文件名
-//    result = "$buildDir/reports/jmh/result.json"
-    // 指定基准测试的模式，可以是 'Throughput', 'AverageTime', 'SampleTime', 或 'SingleShotTime'
-    benchmarkMode = ['Throughput']
-    // 指定在运行基准测试时是否应该打印额外的诊断输出
-//    verbose = 'NORMAL'
-}
+//jmh {
+//    // 指定基准测试应该运行多少次迭代
+//    iterations = 10
+//    // 指定每次迭代应该运行多长时间
+//    timeOnIteration = '1s'
+//    // 指定在基准测试开始之前，应该运行多少次热身迭代
+//    warmupIterations = 5
+//    // 指定每次热身迭代应该运行多长时间
+////    warmupTime = '1s'
+//    // 指定应该使用多少个线程来运行基准测试
+//    threads = 4
+//    // 指定输出结果的格式，可以是 'text', 'csv', 'scsv', 'json', 'latex', 或 'gnuplot'
+//    resultFormat = 'json'
+//    // 指定输出结果的文件名
+////    result = "$buildDir/reports/jmh/result.json"
+//    // 指定基准测试的模式，可以是 'Throughput', 'AverageTime', 'SampleTime', 或 'SingleShotTime'
+//    benchmarkMode = ['Throughput']
+//    // 指定在运行基准测试时是否应该打印额外的诊断输出
+////    verbose = 'NORMAL'
+//}
 
 //test {
 //    useJUnitPlatform()
