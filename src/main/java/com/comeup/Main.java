@@ -1,11 +1,10 @@
 package com.comeup;
 
-import com.alibaba.fastjson.JSON;
-
 import java.lang.ref.WeakReference;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 /**
  * @auth: qwf
@@ -14,32 +13,40 @@ import java.util.Map;
  */
 public class Main {
 
-    public static void main1(String[] args) {
+    public static void main(String[] args) {
 
+        Random random = new Random(100);
 
-        Map<String, Integer> map = new HashMap<>();
-
-        for (int i = 0; i < args.length; i++) {
-            map.merge(args[i], 1, Integer::sum);
+        for (int i = 0; i < 100; i++) {
+            System.out.println(random.nextInt(100));
         }
 
-        System.out.println(JSON.toJSONString(map));
 
 
-        int n = 13;
-        System.out.println(Integer.toBinaryString(n));
-        n |= n >>> 1;
-        System.out.println(Integer.toBinaryString(n));
-        n |= n >>> 2;
-        System.out.println(Integer.toBinaryString(n));
-        n |= n >>> 4;
-        System.out.println(Integer.toBinaryString(n));
-        n |= n >>> 8;
-        System.out.println(Integer.toBinaryString(n));
-        n |= n >>> 16;
-        System.out.println(Integer.toBinaryString(n));
-        n = (n + 1) << 1;
-        System.out.println(Integer.toBinaryString(n));
+
+//        Map<String, Integer> map = new HashMap<>();
+//
+//        for (int i = 0; i < args.length; i++) {
+//            map.merge(args[i], 1, Integer::sum);
+//        }
+//
+//        System.out.println(JSON.toJSONString(map));
+//
+//
+//        int n = 13;
+//        System.out.println(Integer.toBinaryString(n));
+//        n |= n >>> 1;
+//        System.out.println(Integer.toBinaryString(n));
+//        n |= n >>> 2;
+//        System.out.println(Integer.toBinaryString(n));
+//        n |= n >>> 4;
+//        System.out.println(Integer.toBinaryString(n));
+//        n |= n >>> 8;
+//        System.out.println(Integer.toBinaryString(n));
+//        n |= n >>> 16;
+//        System.out.println(Integer.toBinaryString(n));
+//        n = (n + 1) << 1;
+//        System.out.println(Integer.toBinaryString(n));
 
 
     }
@@ -51,7 +58,7 @@ public class Main {
      * @description TODO 弱引用
      * @date 2024年3月6日 0006
      */
-    public static void main(String[] args) {
+    public static void main1(String[] args) {
         WeakReferenceCache<String, Object> cache = new WeakReferenceCache<>();
         Object value = new Object();
         cache.put("key", value);
