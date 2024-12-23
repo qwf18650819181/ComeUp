@@ -28,6 +28,7 @@ public class Main {
 
         log.info(DB_MARKER, "marker");
         MDC.put("discriminator", "STDOUT2");
+
         log.warn("LOGGER");
         log.info("logger");
         log.info("{}", LocalDateTime.now());

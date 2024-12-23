@@ -144,6 +144,9 @@ dependencies {
     implementation("net.sf.oval:oval:3.2.1")
 
     implementation 'io.netty:netty-all:4.1.69.Final'
+
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0' // 检查最新版本
+
 }
 
 //jmh {

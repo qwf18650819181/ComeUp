@@ -59,7 +59,7 @@
 <!--        <appender-ref ref="ASYNC" />-->
     </root>
     <logger name="com.comeup.slflog.SpecificLogger" additivity="false" level="INFO">
-        <appender-ref ref="SIFT"/>
+        <appender-ref ref="FILE"/>
     </logger>
 
 </configuration>
