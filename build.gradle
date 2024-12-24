@@ -23,6 +23,7 @@ plugins {
     id 'java'
     id("org.jetbrains.kotlin.jvm") version "1.9.20"
 //    id 'me.champeau.gradle.jmh' version '0.5.3'
+    id("com.apollographql.apollo") version "2.5.13"
 }
 
 configurations {
@@ -146,6 +147,11 @@ dependencies {
     implementation 'io.netty:netty-all:4.1.69.Final'
 
     implementation 'com.squareup.okhttp3:okhttp:4.9.0' // 检查最新版本
+
+    implementation 'com.shopify.graphql.support:support:0.2.1'
+
+    implementation("com.apollographql.apollo:apollo-runtime:2.5.13")
+
 
 }
 
