@@ -1,0 +1,15 @@
+query ProductMetaFields($ownerId: ID!) {
+    product(id: $ownerId) {
+        metafields(first: 250) {
+            edges {
+                node {
+                    id
+                    namespace
+                    key
+                    value
+                    type
+                }
+            }
+        }
+    }
+}

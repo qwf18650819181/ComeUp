@@ -1,0 +1,68 @@
+mutation ProductCreateMutation($input: ProductInput!, $media: [CreateMediaInput!]) {
+    productCreate(input: $input, media: $media) {
+        product {
+            id
+            title
+            bodyHtml
+            vendor
+            productType
+            createdAt
+            handle
+            updatedAt
+            publishedAt
+            templateSuffix
+            tags
+            status
+            publishedOnCurrentPublication
+            images(first: 250) {
+                nodes {
+                    id
+                    height
+                    width
+                    src
+                    altText
+                }
+            }
+            options(first: 250) {
+                name
+                id
+                position
+                values
+            }
+            variants(first: 250) {
+                nodes {
+                    id
+                    title
+                    price
+                    sku
+                    position
+                    inventoryPolicy
+                    compareAtPrice
+                    updatedAt
+                    createdAt
+                    taxable
+                    barcode
+                    selectedOptions {
+                        name
+                        value
+                    }
+                    image {
+                        id
+                    }
+                    inventoryItem {
+                        id
+                        requiresShipping
+                    }
+                    inventoryQuantity
+                    product {
+                        id
+                    }
+                }
+            }
+        }
+        userErrors {
+            field
+            message
+        }
+    }
+}

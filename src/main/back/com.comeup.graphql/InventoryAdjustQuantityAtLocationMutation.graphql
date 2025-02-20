@@ -1,0 +1,19 @@
+mutation inventoryAdjustQuantities($locationId: ID!, $input: [InventoryAdjustItemInput!]!) {
+    inventoryBulkAdjustQuantityAtLocation(locationId: $locationId, inventoryItemAdjustments: $input) {
+        inventoryLevels {
+            id
+            available
+            location {
+                id
+            }
+            item {
+                id
+            }
+        }
+        userErrors {
+            field
+            message
+        }
+
+    }
+}

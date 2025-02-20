@@ -1,0 +1,81 @@
+query productByDateRange($after: String, $limit: Int, $query: String){
+    products(after: $after, first: $limit, query: $query) {
+        edges {
+            node {
+                id
+                title
+                descriptionHtml
+                vendor
+                productType
+                createdAt
+                handle
+                updatedAt
+                publishedAt
+                templateSuffix
+                tags
+                status
+                publishedOnCurrentPublication
+                images(first: 250) {
+                    nodes {
+                        id
+                        height
+                        width
+                        src
+                        altText
+                        ... on Image {
+                            url
+                            id
+                            altText
+                            height
+                            width
+                        }
+                    }
+                }
+                options(first: 250) {
+                    name
+                    id
+                    position
+                    values
+                }
+                variants(first: 250) {
+                    nodes {
+                        id
+                        title
+                        price
+                        sku
+                        position
+                        inventoryPolicy
+                        compareAtPrice
+                        updatedAt
+                        createdAt
+                        taxable
+                        barcode
+                        selectedOptions {
+                            name
+                            value
+                        }
+                        image {
+                            id
+                            width
+                            height
+                            url
+                            altText
+                        }
+                        inventoryItem {
+                            id
+                            requiresShipping
+                        }
+                        inventoryQuantity
+                        product {
+                            id
+                        }
+                    }
+                }
+            }
+        }
+        pageInfo {
+            endCursor
+            hasNextPage
+        }
+    }
+}

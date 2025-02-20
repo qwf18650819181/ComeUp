@@ -1,0 +1,21 @@
+mutation productVariantsBulkUpdateWithImage($productId: ID!, $variants: [ProductVariantsBulkInput!]!) {
+    productVariantsBulkUpdate(productId: $productId, variants: $variants) {
+        product {
+            id
+        }
+        productVariants {
+            id
+            media {
+                nodes {
+                    id
+                    alt
+                    status
+                }
+            }
+        }
+        userErrors {
+            field
+            message
+        }
+    }
+}

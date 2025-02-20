@@ -1,10 +1,14 @@
 package com.comeup.easyexcel;
 
 import com.alibaba.excel.EasyExcel;
+import com.alibaba.excel.context.AnalysisContext;
+import com.alibaba.excel.read.listener.ReadListener;
+import com.alibaba.excel.support.ExcelTypeEnum;
 import com.alibaba.fastjson.JSON;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,21 +19,38 @@ import java.util.List;
 public class EasyExcel2211 {
 
     public static void main(String[] args) throws FileNotFoundException {
-        UploadDynamicExcelListener syncReadListener = new UploadDynamicExcelListener();
-//        ExcelReaderBuilder excelReaderBuilder = EasyExcelFactory.read("D://1.xlsx", syncReadListener).autoCloseStream(true).ignoreEmptyRow(true);
-//        excelReaderBuilder.sheet().doRead();
-//
-//        List<Object> list = syncReadListener.getList();
 
+        ReportReadListener<WalmartInventoryHealthReportHeaderV20250219> listener = new ReportReadListener<>();
+        EasyExcel.read(new FileInputStream("D://inventoryHealth.csv"), WalmartInventoryHealthReportHeaderV20250219.class, listener).autoCloseStream(Boolean.TRUE).excelType(ExcelTypeEnum.CSV).doReadAllSync();
 
-        List<List<String>> objects = EasyExcel.read(new FileInputStream("D://1.xlsx"), syncReadListener).headRowNumber(-1).sheet().doReadSync();
-        System.out.println(JSON.toJSON(syncReadListener));
-        System.out.println(JSON.toJSON(objects));
-
+        listener.getList().forEach(item -> {
+            System.out.println(JSON.toJSONString(item));
+        });
 
     }
 
 
+    public static class ReportReadListener<T> implements ReadListener<T> {
+        private List<T> list = new ArrayList<>();
+
+        public List<T> getList() {
+            return list;
+        }
+
+        public void setList(List<T> list) {
+            this.list = list;
+        }
+
+        @Override
+        public void invoke(T data, AnalysisContext context) {
+            list.add(data);
+        }
+
+        @Override
+        public void doAfterAllAnalysed(AnalysisContext context) {
+
+        }
+    }
 
 
 

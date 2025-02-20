@@ -1,0 +1,18 @@
+mutation productUpdateMedia($productId: ID!, $media: [UpdateMediaInput!]!) {
+    productUpdateMedia(media: $media, productId: $productId) {
+        media {
+            id
+            alt
+            status
+            ... on MediaImage {
+                image {
+                    url
+                }
+            }
+        }
+        mediaUserErrors {
+            field
+            message
+        }
+    }
+}

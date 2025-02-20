@@ -1,6 +1,5 @@
 package com.comeup;
 
-import com.alibaba.fastjson.JSON;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,6 +15,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.ref.WeakReference;
+import java.net.InetSocketAddress;
+import java.net.Proxy;
 import java.nio.charset.Charset;
 import java.util.Collections;
 import java.util.HashMap;
@@ -31,10 +32,7 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        JSON.parseObject("data", Map.class).get("location");
-
-
-
+//        JSON.parseObject("data", Map.class).get("location");
 
 
         amazonZip();
@@ -146,11 +144,10 @@ public class Main {
      * @throws IllegalArgumentException when the charset is missing
      */
     public static void amazonZip() throws IOException, IllegalArgumentException {
-        String url=
-                "https://tortuga-prod-na.s3-external-1.amazonaws.com/87076ec4-efd6-4169-b8d5-25be4f267952.amzn1.tortuga.4.na.T1GDTDZBL8I047?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20241030T010035Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=AKIA5U6MO6RACOWQRBEF%2F20241030%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=c6b2789f87353e29abc94340b271525abc71a52c7b7f9b4cc9b757a1d144d7ed"
-        ;
+        String url= "https://tortuga-prod-na.s3-external-1.amazonaws.com/327a97be-49de-442c-8ea1-b55cbde3d375.amzn1.tortuga.4.na.T1OYRRIAHLIA6A?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250121T062659Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=AKIA5U6MO6RAMMWQRGH7%2F20250121%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=990acae65dc1a44e2aaace78b304f2722ede5e98dfd6f989bd6b92a6655ac76a";
+
         String compressionAlgorithm = "GZIP";
-        OkHttpClient httpclient = new OkHttpClient();
+        OkHttpClient httpclient = new OkHttpClient.Builder().proxy(new Proxy(Proxy.Type.HTTP, new InetSocketAddress("localhost", 7078))).build();
         Request request = new Request.Builder()
                 .url(url)
                 .get()

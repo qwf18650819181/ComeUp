@@ -1,0 +1,23 @@
+query Locations {
+    locations(first: 250) {
+        edges {
+            node {
+                id
+                name
+                address {
+                    formatted
+                    address1
+                    address2
+                    city
+                    zip
+                    province
+                    country
+                    phone
+                    countryCode
+                    provinceCode
+                }
+                isActive
+            }
+        }
+    }
+}

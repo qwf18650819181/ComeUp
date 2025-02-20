@@ -1,0 +1,136 @@
+query Order($after: String, $limit: Int, $query: String) {
+    orders(after: $after, first: $limit, query: $query) {
+        edges {
+            node {
+                id
+                confirmationNumber
+                poNumber
+                displayFinancialStatus
+                createdAt
+                cancelledAt
+                test
+                currencyCode
+                displayFulfillmentStatus
+                lineItems(first: 50) {
+                    nodes {
+                        id
+                        sku
+                        quantity
+                        title
+                        originalUnitPrice
+                        fulfillmentStatus
+                        discountedTotal
+                        discountAllocations {
+                            allocatedAmount {
+                                amount
+                                currencyCode
+                            }
+                        }
+                        product {
+                            id
+                        }
+                    }
+                }
+                email
+                updatedAt
+                cancelledAt
+                totalPrice
+                totalDiscounts
+                discountCodes
+                paymentGatewayNames
+                shippingAddress {
+                    firstName
+                    address1
+                    phone
+                    city
+                    zip
+                    province
+                    country
+                    lastName
+                    address2
+                    company
+                    latitude
+                    name
+                    countryCodeV2
+                    provinceCode
+                    longitude
+                }
+                customerLocale
+                fulfillments {
+                    status
+                }
+                refunds {
+                    id
+                    order {
+                        id
+                    }
+                    createdAt
+                    note
+                    refundLineItems(first: 50) {
+                        nodes {
+                            subtotal
+                            lineItem {
+                                id
+                                quantity
+                                sku
+                                title
+                                originalUnitPrice
+                                fulfillmentStatus
+                                discountedTotal
+                                discountAllocations {
+                                    allocatedAmount {
+                                        amount
+                                        currencyCode
+                                    }
+                                }
+                                product {
+                                    id
+                                }
+
+                            }
+                        }
+                    }
+                    transactions(first: 50) {
+                        nodes {
+                            id
+                            order {
+                                id
+                            }
+                            kind
+                            amount
+                            status
+                            test
+                            createdAt
+                        }
+                    }
+                }
+                shippingLines(first: 50) {
+                    nodes {
+                        id
+                        title
+                        price
+                        code
+                        source
+                        phone
+                        requestedFulfillmentService {
+                            id
+                        }
+                        deliveryCategory
+                        carrierIdentifier
+                        discountedPrice {
+                            amount
+                            currencyCode
+                        }
+                    }
+                }
+                updatedAt
+                tags
+            }
+            cursor
+        }
+        pageInfo {
+            endCursor
+            hasNextPage
+        }
+    }
+}

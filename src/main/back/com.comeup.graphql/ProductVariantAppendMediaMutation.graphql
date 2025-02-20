@@ -1,0 +1,8 @@
+mutation productVariantAppendMedia($productId: ID!, $variantMedia: [ProductVariantAppendMediaInput!]!) {
+    productVariantAppendMedia(productId: $productId, variantMedia: $variantMedia) {
+        userErrors {
+            field
+            message
+        }
+    }
+}

@@ -1,0 +1,17 @@
+mutation FulfillmentTrackingInfoUpdate($fulfillmentId: ID!, $trackingInfoInput: FulfillmentTrackingInput!, $notifyCustomer: Boolean) {
+    fulfillmentTrackingInfoUpdateV2(fulfillmentId: $fulfillmentId, trackingInfoInput: $trackingInfoInput, notifyCustomer: $notifyCustomer) {
+        fulfillment {
+            id
+            status
+            trackingInfo {
+                company
+                number
+                url
+            }
+        }
+        userErrors {
+            field
+            message
+        }
+    }
+}

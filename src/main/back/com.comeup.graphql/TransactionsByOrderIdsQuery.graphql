@@ -1,0 +1,45 @@
+query TransactionsByOrderIds($after: String, $limit: Int, $query: String) {
+    orders(after: $after, first: $limit, query: $query) {
+        edges {
+            node {
+                id
+                transactions {
+                    id
+                    authorizationCode
+                    gateway
+                    kind
+                    receiptJson
+                    status
+                    createdAt
+                    test
+                    parentTransaction {
+                        id
+                    }
+                    processedAt
+                    errorCode
+                    amount
+                    settlementCurrency
+                    paymentId
+                    totalUnsettledSet {
+                        presentmentMoney {
+                            amount
+                            currencyCode
+                        }
+                        shopMoney {
+                            amount
+                            currencyCode
+                        }
+                    }
+                    order {
+                        id
+                    }
+                }
+            }
+            cursor
+        }
+        pageInfo {
+            endCursor
+            hasNextPage
+        }
+    }
+}

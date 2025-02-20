@@ -1,0 +1,17 @@
+query FulfillmentByOrderIds($after: String, $limit: Int, $query: String) {
+    orders(after: $after, first: $limit, query: $query) {
+        edges {
+            node {
+                id
+                fulfillments {
+                    id
+                }
+            }
+            cursor
+        }
+        pageInfo {
+            endCursor
+            hasNextPage
+        }
+    }
+}

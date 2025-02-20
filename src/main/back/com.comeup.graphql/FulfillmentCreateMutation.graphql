@@ -1,0 +1,23 @@
+mutation FulfillmentCreate($fulfillment: FulfillmentV2Input!) {
+    fulfillmentCreateV2(fulfillment: $fulfillment) {
+        fulfillment {
+            id
+            fulfillmentLineItems(first: 10) {
+                edges {
+                    node {
+                        id
+                    }
+                }
+            }
+            trackingInfo(first: 250) {
+                company
+                number
+                url
+            }
+        }
+        userErrors {
+            field
+            message
+        }
+    }
+}
