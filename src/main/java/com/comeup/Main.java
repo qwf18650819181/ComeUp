@@ -1,5 +1,7 @@
 package com.comeup;
 
+import cn.hutool.core.collection.CollUtil;
+import com.alibaba.fastjson.JSON;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,8 +22,11 @@ import java.net.Proxy;
 import java.nio.charset.Charset;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.zip.GZIPInputStream;
+
+import static java.util.stream.Collectors.toList;
 
 /**
  * @auth: qwf
@@ -32,10 +37,80 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-//        JSON.parseObject("data", Map.class).get("location");
+        List<PublishProductAttribute> publishProductAttributes = JSON.parseArray("[{\n" +
+                "            \"attrName\": \"Style\",\n" +
+                "            \"attrValue\": \"Sporty\",\n" +
+                "            \"attrText\": \"Sporty(运动)\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"attrName\": \"Upper\",\n" +
+                "            \"attrValue\": \"Synthe Leather\",\n" +
+                "            \"attrText\": \"Synthe Leather(合成革)\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"attrName\": \"Upper\",\n" +
+                "            \"attrValue\": \"PU Nubock\",\n" +
+                "            \"attrText\": \"PU Nubock(牛巴)\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"attrName\": \"Lining\",\n" +
+                "            \"attrValue\": \"Plush\",\n" +
+                "            \"attrText\": \"Plush(长毛绒)\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"attrName\": \"Toe Shapes\",\n" +
+                "            \"attrValue\": \"Point\",\n" +
+                "            \"attrText\": \"Point(尖头)\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"attrName\": \"Outsole\",\n" +
+                "            \"attrValue\": \"PU Leather\",\n" +
+                "            \"attrText\": \"PU Leather(PU革)\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"attrName\": \"Insole\",\n" +
+                "            \"attrValue\": \"PU Leather\",\n" +
+                "            \"attrText\": \"PU Leather(PU革)\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"attrName\": \"Upper Height\",\n" +
+                "            \"attrValue\": \"77\",\n" +
+                "            \"attrText\": \"77(74)\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"attrName\": \"Closure Type\",\n" +
+                "            \"attrValue\": \"Zipper\",\n" +
+                "            \"attrText\": \"Zipper(拉链)\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"attrName\": \"Detail\",\n" +
+                "            \"attrValue\": \"D-ring\",\n" +
+                "            \"attrText\": \"D-ring(线环扣)\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"attrName\": \"Package Content\",\n" +
+                "            \"attrValue\": \"10\",\n" +
+                "            \"attrText\": \"10xPair\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"attrName\": \"Material\",\n" +
+                "            \"attrValue\": \"ceshi_caizhi\",\n" +
+                "            \"attrText\": \"ceshi_caizhi\"\n" +
+                "        }]", PublishProductAttribute.class);
+
+//        publishWebsiteProduct = Collections.emptyList();
+        List<PublishProductAttribute> materialAttributeList = publishProductAttributes.stream().filter(publishProductAttribute -> "Material".equalsIgnoreCase(publishProductAttribute.getAttrName().trim())).collect(toList());
+        List<PublishProductAttribute> upperAttributeList = publishProductAttributes.stream().filter(publishProductAttribute -> "Upper".equalsIgnoreCase(publishProductAttribute.getAttrName().trim())).collect(toList());
+        if (CollUtil.isEmpty(materialAttributeList) && CollUtil.isNotEmpty(upperAttributeList)) {
+            System.out.println(1);
+        }
+
+        publishProductAttributes.addAll(upperAttributeList);
+        System.out.println(1);
 
 
-        amazonZip();
+
+//        amazonZip();
 //
 //        Random random = new Random(100);
 //        for (int i = 0; i < 100; i++) {
