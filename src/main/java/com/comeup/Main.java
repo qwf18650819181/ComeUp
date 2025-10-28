@@ -1,7 +1,5 @@
 package com.comeup;
 
-import cn.hutool.core.collection.CollUtil;
-import com.alibaba.fastjson.JSON;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,13 +18,13 @@ import java.lang.ref.WeakReference;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.nio.charset.Charset;
+import java.text.SimpleDateFormat;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.TimeZone;
 import java.util.zip.GZIPInputStream;
-
-import static java.util.stream.Collectors.toList;
 
 /**
  * @auth: qwf
@@ -36,129 +34,20 @@ import static java.util.stream.Collectors.toList;
 public class Main {
 
     public static void main(String[] args) throws Exception {
-
-        List<PublishProductAttribute> publishProductAttributes = JSON.parseArray("[{\n" +
-                "            \"attrName\": \"Style\",\n" +
-                "            \"attrValue\": \"Sporty\",\n" +
-                "            \"attrText\": \"Sporty(运动)\"\n" +
-                "        },\n" +
-                "        {\n" +
-                "            \"attrName\": \"Upper\",\n" +
-                "            \"attrValue\": \"Synthe Leather\",\n" +
-                "            \"attrText\": \"Synthe Leather(合成革)\"\n" +
-                "        },\n" +
-                "        {\n" +
-                "            \"attrName\": \"Upper\",\n" +
-                "            \"attrValue\": \"PU Nubock\",\n" +
-                "            \"attrText\": \"PU Nubock(牛巴)\"\n" +
-                "        },\n" +
-                "        {\n" +
-                "            \"attrName\": \"Lining\",\n" +
-                "            \"attrValue\": \"Plush\",\n" +
-                "            \"attrText\": \"Plush(长毛绒)\"\n" +
-                "        },\n" +
-                "        {\n" +
-                "            \"attrName\": \"Toe Shapes\",\n" +
-                "            \"attrValue\": \"Point\",\n" +
-                "            \"attrText\": \"Point(尖头)\"\n" +
-                "        },\n" +
-                "        {\n" +
-                "            \"attrName\": \"Outsole\",\n" +
-                "            \"attrValue\": \"PU Leather\",\n" +
-                "            \"attrText\": \"PU Leather(PU革)\"\n" +
-                "        },\n" +
-                "        {\n" +
-                "            \"attrName\": \"Insole\",\n" +
-                "            \"attrValue\": \"PU Leather\",\n" +
-                "            \"attrText\": \"PU Leather(PU革)\"\n" +
-                "        },\n" +
-                "        {\n" +
-                "            \"attrName\": \"Upper Height\",\n" +
-                "            \"attrValue\": \"77\",\n" +
-                "            \"attrText\": \"77(74)\"\n" +
-                "        },\n" +
-                "        {\n" +
-                "            \"attrName\": \"Closure Type\",\n" +
-                "            \"attrValue\": \"Zipper\",\n" +
-                "            \"attrText\": \"Zipper(拉链)\"\n" +
-                "        },\n" +
-                "        {\n" +
-                "            \"attrName\": \"Detail\",\n" +
-                "            \"attrValue\": \"D-ring\",\n" +
-                "            \"attrText\": \"D-ring(线环扣)\"\n" +
-                "        },\n" +
-                "        {\n" +
-                "            \"attrName\": \"Package Content\",\n" +
-                "            \"attrValue\": \"10\",\n" +
-                "            \"attrText\": \"10xPair\"\n" +
-                "        },\n" +
-                "        {\n" +
-                "            \"attrName\": \"Material\",\n" +
-                "            \"attrValue\": \"ceshi_caizhi\",\n" +
-                "            \"attrText\": \"ceshi_caizhi\"\n" +
-                "        }]", PublishProductAttribute.class);
-
-//        publishWebsiteProduct = Collections.emptyList();
-        List<PublishProductAttribute> materialAttributeList = publishProductAttributes.stream().filter(publishProductAttribute -> "Material".equalsIgnoreCase(publishProductAttribute.getAttrName().trim())).collect(toList());
-        List<PublishProductAttribute> upperAttributeList = publishProductAttributes.stream().filter(publishProductAttribute -> "Upper".equalsIgnoreCase(publishProductAttribute.getAttrName().trim())).collect(toList());
-        if (CollUtil.isEmpty(materialAttributeList) && CollUtil.isNotEmpty(upperAttributeList)) {
-            System.out.println(1);
-        }
-
-        publishProductAttributes.addAll(upperAttributeList);
-        System.out.println(1);
-
-
-
-//        amazonZip();
-//
-//        Random random = new Random(100);
-//        for (int i = 0; i < 100; i++) {
-//            int i1 = random.nextInt(100);
-//            System.out.println(i1);
-//        }
-//
-//
-//        long l = DateUtil.betweenDay(new Date(), DateUtils.addMinutes(new Date(), 3), true);
-//        System.out.println(l);
-//
-//
-//        for (int i = 0; i < 100; i++) {
-//            System.out.println(random.nextInt(100));
-//        }
-//
-//
-//        Person person = new Person();
-//        if (Integer.valueOf(1) == null) {
-//            System.out.println("MATERIAL_SUPPLIER_IS_TORT");
-//        } else {
-//            System.out.println("MATERIAL_SUPPLIER_IS_TORT\" OR str_attr=\"MATERIAL_SUPPLIER_NOT_TORT");
-//        }
-
-
-//        Map<String, Integer> map = new HashMap<>();
-//
-//        for (int i = 0; i < args.length; i++) {
-//            map.merge(args[i], 1, Integer::sum);
-//        }
-//
-//        System.out.println(JSON.toJSONString(map));
-//
-//
-//        int n = 13;
-//        System.out.println(Integer.toBinaryString(n));
-//        n |= n >>> 1;
-//        System.out.println(Integer.toBinaryString(n));
-//        n |= n >>> 2;
-//        System.out.println(Integer.toBinaryString(n));
-//        n |= n >>> 4;
-//        System.out.println(Integer.toBinaryString(n));
-//        n |= n >>> 8;
-//        System.out.println(Integer.toBinaryString(n));
-//        n |= n >>> 16;
-//        System.out.println(Integer.toBinaryString(n));
-//        n = (n + 1) << 1;
-//        System.out.println(Integer.toBinaryString(n));
+        // 这是东八区时间戳
+        long timestampInShanghai = 1756085120000L;
+        // 减去东八区时差，得到 UTC 时间戳
+        long timestampInUTC = timestampInShanghai - TimeZone.getTimeZone("Asia/Shanghai").getRawOffset();
+        // 创建 Date 对象
+        Date dateInUTC = new Date(timestampInUTC);
+        // 创建 SimpleDateFormat 对象
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        // 设置为 UTC 的时区
+        sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
+        // 格式化日期为 UTC 时间
+        String formattedUTC = sdf.format(dateInUTC);
+        // 打印 UTC 格式化后的日期
+        System.out.println("UTC 时间: " + formattedUTC);
 
 
     }
